@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2>Add Task</h2>
+    <form [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="taskName">taskName</label>
+            <input type="text" formControlName="taskName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.taskName.errors }" />
+            <div *ngIf="submitted && f.taskName.errors" class="invalid-feedback">
+                <div *ngIf="f.taskName.errors.required">taskName is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taskDetail">taskDetail</label>
+            <input type="text" formControlName="taskDetail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.taskDetail.errors }" />
+            <div *ngIf="submitted && f.taskDetail.errors" class="invalid-feedback">
+                <div *ngIf="f.taskDetail.errors.required">taskDetail is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Add Task
+            </button>
+        </div>
+    </form>
+</div>
